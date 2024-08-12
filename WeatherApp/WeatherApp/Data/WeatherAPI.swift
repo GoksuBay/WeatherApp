@@ -16,7 +16,7 @@ protocol APIEndpoint {
 extension APIEndpoint {
     var urlComponents: URLComponents? {
         var components = URLComponents(string: baseURL)
-        components?.path = path
+        components?.path.append(path)
         components?.queryItems = queryItems
         return components
     }

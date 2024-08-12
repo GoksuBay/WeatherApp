@@ -5,10 +5,13 @@
 //  Created by Göksu Bayram on 11.08.2024.
 //
 
-import Foundation
 import SwiftUI
 
 struct CurrentWeatherView: View {
+    var city: String
+    var temperature: Double
+    var description: String
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -23,7 +26,7 @@ struct CurrentWeatherView: View {
                         .frame(width: 20, height: 20)
                         .foregroundColor(.gray)
                     
-                    Text("Antalya")
+                    Text(city)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
@@ -39,12 +42,12 @@ struct CurrentWeatherView: View {
                 .foregroundStyle(.white, .yellow)
             
             VStack(alignment: .trailing) {
-                Text("24°")
+                Text("\(String(format: "%.1f", temperature))°")
                     .font(.system(size: 50))
                     .bold()
                     .foregroundColor(.white)
                 
-                Text("Mostly Clear")
+                Text(description.capitalized)
                     .font(.headline)
                     .foregroundColor(.gray)
             }
@@ -56,6 +59,7 @@ struct CurrentWeatherView: View {
     }
 }
 
+
 #Preview {
-    CurrentWeatherView()
+    CurrentWeatherView(city: "Antalya", temperature: 39.5, description: "Test")
 }
